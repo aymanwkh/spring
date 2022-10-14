@@ -2,7 +2,19 @@ package com.example.spring.student;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Student {
+  @Id
+  @SequenceGenerator(name= "user_seq", sequenceName = "user_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
   private Long id;
   public Student(String name, String email, String password) {
     this.name = name;
@@ -44,6 +56,16 @@ public class Student {
     this.created = created;
   }
   private LocalDate updated;
+  public Student(Long id, String name, String email, String password, LocalDate created, LocalDate updated) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.created = created;
+    this.updated = updated;
+  }
+  public Student() {
+  }
   public LocalDate getUpdated() {
     return updated;
   }
