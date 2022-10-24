@@ -1,4 +1,4 @@
-package com.example.spring.student;
+package com.example.spring.user;
 
 import java.util.Optional;
 
@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudentRepo extends JpaRepository<Student, Long>{
+public interface UserRepo extends JpaRepository<User, Long>{
 
-  @Query("select s from Student s where s.email = ?1")
-  Optional<Student> findByEmail(String email);
+  @Query("select s from User s where s.email = ?1")
+  Optional<User> findByEmail(String email);
   
 }
